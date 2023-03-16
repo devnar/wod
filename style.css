@@ -1,0 +1,100 @@
+.terminal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000;
+    color: #ffffff;
+    box-shadow: 0px 0px 5px #ffffff;
+    font-family: monospace;
+    font-size: 16px;
+    overflow: hidden;
+}
+
+.header {
+    background-color: #222222;
+    height: 30px;
+    width: 100%;
+}
+
+.red {
+    background-color: #ff5f57;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    margin: 8px;
+    float: left;
+}
+
+.yellow {
+    background-color: #ffbd2e;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    margin: 8px;
+    float: left;
+}
+
+.green {
+    background-color: #28c745;
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    margin: 8px;
+    float: left;
+}
+
+.content {
+    padding: 10px;
+}
+
+.command {
+    display: inline;
+    margin: 0;
+}
+
+table,tr {width: 100%;}
+
+.input-box {
+    background-color: transparent;
+    border: none;
+    color: #ffffff;
+    font-family: monospace;
+    font-size: 16px;
+    outline: none;
+    width: 100%;
+}
+
+.input-box:focus {
+    outline: none;
+}
+
+.tab-menu {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: inline-block;
+}
+
+.tab-menu li {
+    float: left;
+    border: 1px solid #222222;
+    border-bottom: none;
+    background-color: #111111;
+    color: #ffffff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.tab-menu li.active {
+    border-radius: 20px 20px 0px 0px;
+    background-color: #000000;
+}
+
+.tab-menu li:hover {
+    border-radius: 20px 20px 0px 0px;
+    background-color: #ffbd2e;
+}
