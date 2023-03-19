@@ -1,7 +1,14 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Terminal Örneği</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=0" />
+    <meta name="description" content="description" />
+    <meta name="copyright" content="NAR © 2021 Tüm hakları saklı" />
+    <meta name="theme-color" content="#23b5b5" />
+    <meta property="og:title" content="title" />
+    <meta property="og:description" content="description" />
+    <meta property="og:image" content="https://devnar.github.io/nar.png" />
+    <title>Darkened Terms</title>
     <link rel="stylesheet" type="text/css" href="style.css">
     <script src="script.js"></script>
   </head>
@@ -11,17 +18,22 @@
         <div class="red"></div>
         <div class="green"></div>
         <ul class="tab-menu">
-            <li onclick="tab1()" id="tab1" class="active">Tab 1</li>
-            <li onclick="tab2()" id="tab2">Tab 2</li>
+          <li onclick="tab1()" id="tab1" class="active">Terminal</li>
+          <li onclick="tab2()" id="tab2">Editor</li>
         </ul>
       </div>
+      <div class="content-e">
+        <h1>Dosya Editörü</h1>
+        <textarea id="code" rows="10" cols="50" oninput="runCode()"></textarea>
+        <div id="output"></div>
+      </div>
       <div class="content">
-        <p class="command">I'm not Hacker [V1.0]</p><br>
+        <p class="command">I'm not Hacker [V1.1]</p><br>
         <div class="messages"></div>
         <br>
         <table>
           <tr>
-            <td><span id="path" style="cursor:default;">A:\user> </span></td>
+            <td><span id="path" style="cursor:default;">A:\User> </span></td>
             <td width="100%"><input type="text" class="input-box" onkeydown="handleInput(event)"></td>
           </tr>
         </table>

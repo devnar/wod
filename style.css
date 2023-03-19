@@ -49,12 +49,24 @@
     padding: 10px;
 }
 
+.content-e {
+    display: none;
+    padding: 10px;
+}
+
 .command {
     display: inline;
     margin: 0;
 }
 
 table,tr {width: 100%;}
+
+textarea {
+    width: 100%;
+    color: white;
+    background: #111111;
+    outline: none;
+}
 
 .input-box {
     background-color: transparent;
@@ -71,6 +83,7 @@ table,tr {width: 100%;}
 }
 
 .tab-menu {
+    width: auto;
     list-style-type: none;
     margin: 0;
     padding: 0;

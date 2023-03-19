@@ -2,11 +2,15 @@
 function tab1() {
   document.getElementById('tab2').className = '';
   document.getElementById('tab1').className = 'active';
+  document.querySelector(".content").style.display="block";
+  document.querySelector(".content-e").style.display="none";
 }
 
 function tab2() {
   document.getElementById('tab1').className = '';
   document.getElementById('tab2').className = 'active';
+  document.querySelector(".content").style.display="none";
+  document.querySelector(".content-e").style.display="block";
 }
 
 // Term
@@ -39,22 +43,39 @@ function handleInput(event) {
       document.querySelector('.messages').innerHTML=""
     }
     if (a == '$file') {
-      sendCommand("Hangi dosyayı görmek istersin? ($cd .DosyaAdı)<br>.attack<br>.defense<br>.data")
+      sendCommand("Hangi dosyayı görmek istersin?<br>.attack<br>.defense<br>.data")
     }
-    if (a.substring(0,20) == '$run A:/User/.attack') {
-      sendCommand(a.substring(20))
+    //run
+    if (a.substring(0,4) == '$run') {
+      if(a.substring(5)==".attack"){
+        sendCommand("Attack başladı")
+      } else if(a.substring(5)==".defence") {
+        sendCommand("Defence başladı")
+      }
     }
-    if (a == '$cd .attack') {
-      document.getElementById("path").innerText = "A:/User/.attack>	";
-      sendCommand("Dosya konumuna geçildi 'A:/User/.attack>'")
+    //open
+    if (a.substring(0,5) == '$open') {
+      if(a.substring(6)==".attack"){
+        tab2();
+      } else if(a.substring(6)==".defence") {
+        tab2();
+      } else if(a.substring(6)==".data") {
+        tab2();
+        document.getElementById("output").innerHTML = localStorage.getItem("f_data");
+      } else {sendCommand("bir dosya belirt")} 
     }
-    if (a == '$cd .defence') {
-      document.getElementById("path").innerText = "A:/User/.defence>	";
-      sendCommand("Dosya konumuna geçildi 'A:/User/.defence>'")
-    }
-    if (a == '$cd .data') {
-      document.getElementById("path").innerText = "A:/User/.data>	";
-      sendCommand("Dosya konumuna geçildi 'A:/User/.data>'")
+    //cd
+    if (a.substring(0,3) == '$cd') {
+      if(a.substring(4)==".attack"){
+        document.getElementById("path").innerText = "A:/User/.attack>	";
+        sendCommand("Dosya konumuna geçildi 'A:/User/.attack>'")
+      } else if(a.substring(4)==".defence") {
+        document.getElementById("path").innerText = "A:/User/.defence>	";
+        sendCommand("Dosya konumuna geçildi 'A:/User/.defence>'")
+      } else if(a.substring(4)==".data") {
+        document.getElementById("path").innerText = "A:/User/.data>	";
+        sendCommand("Dosya konumuna geçildi 'A:/User/.data>'")
+      } else {sendCommand("bir dosya belirt")}
     }
   }
   
@@ -66,5 +87,19 @@ function handleInput(event) {
     document.querySelector('.messages').appendChild(newLine);
     document.querySelector('.messages').appendChild(commandSpan);
   }
+
+//Editor
+function runCode() {
+  // Kodu al
+  var code = document.getElementById("code").value;
+
+  // Kodu yürüt
+  try {
+    var result = eval(code);
+    document.getElementById("output").innerHTML = result;
+  } catch (e) {
+    document.getElementById("output").innerHTML = e.message;
+  }
+}
 
   
