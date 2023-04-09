@@ -1,43 +1,102 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=0" />
-    <meta name="description" content="description" />
-    <meta name="copyright" content="NAR © 2021 Tüm hakları saklı" />
-    <meta name="theme-color" content="#23b5b5" />
-    <meta property="og:title" content="title" />
-    <meta property="og:description" content="description" />
-    <meta property="og:image" content="https://devnar.github.io/nar.png" />
-    <title>Darkened Terms</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-    <script src="script.js"></script>
-  </head>
-  <body onload="wLoad()">
-    <div class="terminal">
-      <div class="header">
-        <div class="red"></div>
-        <div class="green"></div>
-        <ul class="tab-menu">
-          <li onclick="tab1()" id="tab1" class="active">Terminal</li>
-          <li onclick="tab2()" id="tab2">Editor</li>
-        </ul>
-      </div>
-      <div class="content-e">
-        <h1>Dosya Editörü</h1>
-        <textarea id="code" rows="10" cols="50" oninput="runCode()"></textarea>
-        <div id="output"></div>
-      </div>
-      <div class="content">
-        <p class="command">I'm not Hacker [V1.1]</p><br>
-        <div class="messages"></div>
-        <br>
-        <table>
-          <tr>
-            <td><span id="path" style="cursor:default;">A:\User> </span></td>
-            <td width="100%"><input type="text" class="input-box" onkeydown="handleInput(event)"></td>
-          </tr>
-        </table>
-      </div>
-    </div>
-  </body>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1 user-scalable=0" />
+        <meta name="description" content="description" />
+        <meta name="copyright" content="NAR © 2021 Tüm hakları saklı" />
+        <meta name="theme-color" content="#23b5b5" />
+        <meta property="og:title" content="title" />
+        <meta property="og:description" content="description" />
+        <meta property="og:image" content="https://devnar.github.io/nar.png" />
+        <title>Darkened Terms</title>
+        <link rel="stylesheet" href="https://devnar.github.io/lib/all.css" />
+        <link rel="stylesheet" type="text/css" href="style.css" />
+        <script src="script.js"></script>
+        <script src="app.js"></script>
+    </head>
+    <body onload="wload()">
+        <div id="win1" class="window" draggable="true">
+            <div id="win1header"><i class="icon n-square-rounded" style="margin-right: 16px;"></i>Title</div>
+            <div class="wincontent"></div>
+        </div>
+        <div class="taskbar">
+            <div class="taskbar-icons">
+                <div class="taskbar-icon"><i class="icon n-grid-alt"></i></div>
+                <div class="taskbar-icon" onclick="mail()"><i class="icon n-envelope"></i></div>
+                <div class="taskbar-icon" onclick="cmd()"><i class="icon n-folder"></i></div>
+                <div class="taskbar-icon" onclick="edtr()"><i class="icon n-file-blank"></i></div>
+            </div>
+            <div class="system-icons">
+                <div class="system-icon"><i class="icon n-bell"></i></div>
+                <div class="system-icon"><span id="clock"></span></div>
+            </div>
+        </div>
+        <script type="module">
+            import interact from "https://cdn.interactjs.io/v1.10.11/interactjs/index.js";
+            interact(".window")
+                .resizable({
+                    edges: { left: true, right: true, bottom: true, top: true },
+
+                    listeners: {
+                        move(event) {
+                            var target = event.target;
+                            var x = parseFloat(target.getAttribute("data-x")) || 0;
+                            var y = parseFloat(target.getAttribute("data-y")) || 0;
+
+                            target.style.width = event.rect.width + "px";
+                            target.style.height = event.rect.height + "px";
+
+                            // translate when resizing from top or left edges
+                            x += event.deltaRect.left;
+                            y += event.deltaRect.top;
+
+                            target.style.transform = "translate(" + x + "px," + y + "px)";
+
+                            target.setAttribute("data-x", x);
+                            target.setAttribute("data-y", y);
+                            // target.textContent = Math.round(event.rect.width) + '\u00D7' + Math.round(event.rect.height)
+                        },
+                    },
+                    modifiers: [
+                        // keep the edges inside the parent
+                        interact.modifiers.restrictEdges({
+                            outer: "parent",
+                        }),
+
+                        // minimum size
+                        interact.modifiers.restrictSize({
+                            min: { width: 100, height: 50 },
+                        }),
+                    ],
+
+                    inertia: true,
+                })
+                .draggable({
+                    listeners: { move: dragMoveListener },
+                    inertia: true,
+                    modifiers: [
+                        interact.modifiers.restrictRect({
+                            restriction: "parent",
+                            endOnly: true,
+                        }),
+                    ],
+                });
+
+            function dragMoveListener(event) {
+                var target = document.getElementById("win1");
+                // keep the dragged position in the data-x/data-y attributes
+                var x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
+                var y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
+
+                // translate the element
+                target.style.transform = "translate(" + x + "px, " + y + "px)";
+
+                // update the posiion attributes
+                target.setAttribute("data-x", x);
+                target.setAttribute("data-y", y);
+            }
+
+            window.dragMoveListener = dragMoveListener;
+        </script>
+    </body>
 </html>
