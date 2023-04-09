@@ -13,6 +13,6 @@ function mail() {
     document.querySelector(".wincontent").innerHTML = "Yakında";
 }
 function edtr() {
-    document.querySelector("#win1header").innerHTML = "<i class='icon n-envelope' style='margin-right: 16px;'></i>Editor";
+    document.querySelector("#win1header").innerHTML = "<i class='icon n-edit' style='margin-right: 16px;'></i>Editor";
     document.querySelector(".wincontent").innerHTML = "Yakında";
 }
