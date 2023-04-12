@@ -1,21 +1,22 @@
-function wload() {
-    const today = new Date();let h = today.getHours();let m = today.getMinutes();document.getElementById('clock').innerHTML =  h + ':' + m + '<br>' + today.getDate() + '.' + today.getMonth() + '.' + today.getFullYear();
-    document.querySelector("#win1header").innerHTML = "<i class='icon n-terminal' style='margin-right: 16px;'></i>Terminal";
-    document.querySelector(".wincontent").innerHTML = "<div class='terminal'><div class='content'> <p class='command'>I'm not Hacker [V2.1]</p><br><div class='messages'></div><br><table> <tr> <td><span id='path' style='cursor:default;'>A:\User> </span></td><td width='100%'><input type='text' class='input-box' onkeydown='handleInput(event)'></td></tr></table> </div></div>";
+function getJ(num) {
+    fetch("app.json")
+    .then(response => response.json())
+    .then(data => {
+        document.querySelector(".wincontent").innerHTML = data[num].code;
+        document.querySelector("#win1header").innerHTML = "<i class='icon n-"+ data[num].icon + "' style='margin-right: 16px;'></i>" + data[num].name;
+      });
 }
 
-function cmd() {
-    document.querySelector("#win1header").innerHTML = "<i class='icon n-terminal' style='margin-right: 16px;'></i>Terminal";
-    document.querySelector(".wincontent").innerHTML = "<div class='terminal'><div class='content'> <p class='command'>I'm not Hacker [V2.1]</p><br><div class='messages'></div><br><table> <tr> <td><span id='path' style='cursor:default;'>A:\User> </span></td><td width='100%'><input type='text' class='input-box' onkeydown='handleInput(event)'></td></tr></table> </div></div>";
+function wload() {
+    const today = new Date();let h = today.getHours();let m = today.getMinutes();document.getElementById('clock').innerHTML =  h + ':' + m + '<br>' + today.getDate() + '.' + today.getMonth() + '.' + today.getFullYear();
+    getJ(0)
 }
-function mail() {
-    document.querySelector("#win1header").innerHTML = "<i class='icon n-envelope' style='margin-right: 16px;'></i>E-posta";
-    document.querySelector(".wincontent").innerHTML = "Yakında";
-}
-function edtr() {
-    document.querySelector("#win1header").innerHTML = "<i class='icon n-edit' style='margin-right: 16px;'></i>Editor";
-    document.querySelector(".wincontent").innerHTML = "Yakında";
-}
+
+function cmd() {getJ(0)}
+
+function mail() {getJ(1)}
+
+function edtr() {getJ(2)}
 
 function main() {
     if (document.querySelector(".menu").style.display == "none") {
