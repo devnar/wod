@@ -12,7 +12,7 @@ html {
     -webkit-transform: translateZ(0) scale(1, 1) translate3d(0, 0, 0);
   }
   
-  #win1 {
+  .window {
     position: absolute;
     top: 20%;
     left: 30%;
@@ -29,12 +29,16 @@ html {
     -webkit-transform: translateZ(0) scale(1, 1) translate3d(0, 0, 0);
   }
   
-  #win1header {
+  .header {
     padding: 10px;
     cursor: move;
     z-index: 10;
     background-color: rgba(255, 255, 255, 0.8);
     color: #444;
+  }
+
+  i:hover {
+    cursor:auto;
   }
   
   .wincontent {
@@ -55,7 +59,8 @@ html {
     margin-bottom: 60px;
     padding: 10px;
     border-radius: 4px;
-    background: rgba(242, 243, 248, 0.5);
+    background-color: rgba(242, 243, 248, 0.5);
+    backdrop-filter: blur(10px);
   }
   
   .extensions {
@@ -69,7 +74,7 @@ html {
   .extension {
     border-radius: 4px;
     margin-top: 5px;
-    background: rgba(242, 243, 248, 0.5);
+    background: rgba(203, 203, 203, 0.5);
     padding: 5px;
   }
   
@@ -79,7 +84,7 @@ html {
     display: flex;
     align-items: center;
     border-radius: 4px;
-    background: rgba(242, 243, 248, 0.5);
+    /*background: rgba(184, 184, 184, 0.5);*/
     margin-top: 10px;
     overflow-y: hidden;
     padding-top: 10px;
@@ -96,7 +101,7 @@ html {
     margin-left: 5px;
     padding: 5px;
     border-radius: 4px;
-    background: rgba(242, 243, 248, 0.5);
+    background-color: #e2e2e2;
   }
 
   .taskbar {

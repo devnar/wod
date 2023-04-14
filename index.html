@@ -17,25 +17,26 @@
     </head>
     <body onload="wload()">
         <div id="win1" class="window" draggable="true">
-            <div id="win1header"><i class="icon n-square-rounded" style="margin-right: 16px;"></i>Title</div>
-            <div class="wincontent"></div>
+            <div class="header"id="win1header"><i class="icon n-square-rounded" style="margin-right: 16px;"></i>Title</div>
+            <div class="wincontent" id="win1content"></div>
+        </div>
+        <div id="win2" class="window" draggable="true" style="display: none;">
+            <div class="header" id="win2header"><i class="icon n-square-rounded" style="margin-right: 16px;"></i>Title</div>
+            <div class="wincontent" id="win2content"></div>
+        </div>
+        <div id="win3" class="window" draggable="true" style="display: none;">
+            <div class="header" id="win3header"><i class="icon n-square-rounded" style="margin-right: 16px;"></i>Title</div>
+            <div class="wincontent" id="win3content"></div>
         </div>
         <div class="menu">
             <div class="extensions">
-                <div class="extension">eklenti 1</div>
+                <div class="extension">Tarayıcı</div>
                 <div class="extension">eklenti 2</div>
-                <div class="extension">eklenti 3</div>
-                <div class="extension">eklenti 4</div>
             </div>
             <div class="settings">
-                <div class="setting">a</div>
-                <div class="setting">b</div>
-                <div class="setting">c</div>
-                <div class="setting">d</div>
-                <div class="setting">a</div>
-                <div class="setting">b</div>
-                <div class="setting">c</div>
-                <div class="setting">d</div>
+                <div class="setting icon n-plus"></div>
+                <div class="setting icon n-moon"></div>
+                <div class="setting icon n-moon"></div>
             </div>
         </div>
         <div class="taskbar">
@@ -100,7 +101,7 @@
                 });
 
             function dragMoveListener(event) {
-                var target = document.getElementById("win1");
+                var target = event.target;
                 // keep the dragged position in the data-x/data-y attributes
                 var x = (parseFloat(target.getAttribute("data-x")) || 0) + event.dx;
                 var y = (parseFloat(target.getAttribute("data-y")) || 0) + event.dy;
