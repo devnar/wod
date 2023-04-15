@@ -8,45 +8,35 @@ function handleInput(event) {
   
   function answer(a) {
     if (a == "$help"|a == "help") {
-      sendCommand("sana yardımcı olamam")
+      sendCommand("$tree<br>$cls<br>$cd => open")
     }
-    if (a == "$cls"|a == "cls") {
+    if (a == "$cls") {
       document.querySelector('.messages').innerHTML=""
     }
-    if (a == '$file') {
-      sendCommand("Hangi dosyayı görmek istersin?<br>.attack<br>.defense<br>.data")
-    }
-    //run
-    if (a.substring(0,4) == '$run') {
-      if(a.substring(5)==".attack"){
-        sendCommand("Attack başladı")
-      } else if(a.substring(5)==".defence") {
-        sendCommand("Defence başladı")
-      }
-    }
-    //open
-    if (a.substring(0,5) == '$open') {
-      if(a.substring(6)==".attack"){
-        tab2();
-      } else if(a.substring(6)==".defence") {
-        tab2();
-      } else if(a.substring(6)==".data") {
-        tab2();
-        document.getElementById("output").innerHTML = localStorage.getItem("f_data");
-      } else {sendCommand("bir dosya belirt")} 
+    if (a == "$tree") {
+      sendCommand("PC<br>├───.data<br>├───.attack<br>└───.defence")
     }
     //cd
     if (a.substring(0,3) == '$cd') {
       if(a.substring(4)==".attack"){
         document.getElementById("path").innerText = "A:/User/.attack>	";
-        sendCommand("Dosya konumuna geçildi 'A:/User/.attack>'")
       } else if(a.substring(4)==".defence") {
         document.getElementById("path").innerText = "A:/User/.defence>	";
-        sendCommand("Dosya konumuna geçildi 'A:/User/.defence>'")
       } else if(a.substring(4)==".data") {
         document.getElementById("path").innerText = "A:/User/.data>	";
-        sendCommand("Dosya konumuna geçildi 'A:/User/.data>'")
-      } else {sendCommand("bir dosya belirt")}
+      } else {sendCommand("Sistem belirtilen yolu bulamıyor.")}
+    }
+
+    //open
+    if (a == "open" && document.getElementById("path").innerText == "A:/User/.data>") {
+      tab(2);getJ(2,2);sendCommand("data editor'de açılıyor");
+      document.getElementById("path").innerText = "A:/User>	";
+    } else if (a == "open" && document.getElementById("path").innerText == "A:/User/.defence>") {
+      tab(2);getJ(2,2);sendCommand("defence editor'de açılıyor");
+      document.getElementById("path").innerText = "A:/User>	";
+    } else if (a == "open" && document.getElementById("path").innerText == "A:/User/.attack>") {
+      tab(2);getJ(2,2);sendCommand("attack editor'de açılıyor");
+      document.getElementById("path").innerText = "A:/User>	";
     }
   }
   

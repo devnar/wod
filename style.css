@@ -36,10 +36,6 @@ html {
     background-color: rgba(255, 255, 255, 0.8);
     color: #444;
   }
-
-  i:hover {
-    cursor:auto;
-  }
   
   .wincontent {
     height: 100%;

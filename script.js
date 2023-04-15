@@ -29,5 +29,4 @@ function main() {
     } else {
         document.querySelector(".menu").style.display = "none"
     }
-    
 }

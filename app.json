@@ -2,7 +2,7 @@
 	{
 		"name": "Terminal",
         "icon": "terminal",
-		"code": "<div class='terminal'><div class='content'> <p class='command'>I'm not Hacker [V2.2]</p><br><div class='messages'></div><br><table> <tr> <td><span id='path' style='cursor:default;'>A:/User> </span></td><td width='100%'><input type='text' class='input-box' onkeydown='handleInput(event)'></td></tr></table> </div></div>"
+		"code": "<div class='terminal'><div class='content'> <p class='command'>I'm not Hacker [V2.2]</p><br><div class='messages'></div><br><table> <tr> <td><span id='path' style='cursor:default;'>A:/User> </span></td><td width='100%'><input type='text' class='input-box' onkeydown='handleInput(event)'></td></tr></table></div></div>"
 	},
     {
         "name": "E-posta",
